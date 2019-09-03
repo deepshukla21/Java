@@ -16,17 +16,17 @@ public class TwoDimensionalArray {
 		int rows = sc.nextInt();
 		System.out.println("Enter number of cols");
 		int cols = sc.nextInt();
-		int array[] [] = new int[rows][cols];
+		Object array[] [] = new Object[rows][cols];
 		// Taking elements inside array
         for ( int i = 0; i < rows ; i++ ) {
 			System.out.println("Enter the input");
 			for ( int j = 0; j < rows ; j++ ) {
-				 array[i][j] = sc.nextInt();
+				 array[i][j] = sc.next();
 				 System.out.println("array["+i +"][" +j +"] = " + array[i][j]);
 			}
         }
         // Printing the array
-		for (int[] arr : array ){
+		for (Object[] arr : array ){
 			System.out.println(Arrays.toString(arr));
 		}
 		// Close open resources
