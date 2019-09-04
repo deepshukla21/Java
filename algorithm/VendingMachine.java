@@ -18,7 +18,6 @@ public class VendingMachine {
 	    	System.out.println("Sorry your entry is not appropriate, enter value greater than 0");
 	    	return;
 	    }
-	    Scanner sc = new Scanner(System.in);
 	    int[] change = {1000, 500, 100, 50, 10, 5, 2,1};
 	    ArrayList<Integer> changelist = new ArrayList<Integer>();
 	    // Checking for change
@@ -36,14 +35,6 @@ public class VendingMachine {
 	    }
 	    System.out.println("Change return will be :" + changelist);
 	    System.out.println("Minimum number of notes to be returned are :" + Note_Count);
-	   // Close open resources
-		try {
-			if(sc != null) {
-				sc.close();
-			}
-		}catch(Exception ex) {
-			ex.printStackTrace();
-		}
 	    
     }
     /* The main function is written to test VendingMachine class
