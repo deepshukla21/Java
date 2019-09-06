@@ -86,7 +86,7 @@ public class MergeSort {
  * The main function is written to test MergeSort class
  */
 	public static void main(String[] args) {
-		int[] array = {5, 8, 4, 1, 7};
+		int[] array = {34 ,55,555, 56, 121, 67, 87};
 		mergeSort(array);
 		System.out.println(Arrays.toString(array));
 		

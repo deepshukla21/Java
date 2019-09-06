@@ -28,7 +28,6 @@ public class MergeSortString {
 			for(int i = 0; i < mid ; i++) {
 				left_array[i] = array[i];
 			}
-			
 			// Inserting element into right sub array
 			for(int j = mid; j < length; j++) {
 				right_array[j - mid] = array[j]; 
@@ -86,7 +85,8 @@ public class MergeSortString {
  * The main function is written to test MergeSortString class
  */
 	public static void main(String[] args) {
-		String[] array = {"be", "The", "Change", "you"};
+		//String[] array = {"be", "The", "Change", "you", "Deep", "Deepa", "Deepak"};
+		String[] array = {"34", "55", "555","121","76"};
 		mergeSort(array);
 		System.out.println("Sorted Array:" + Arrays.toString(array));
 		
