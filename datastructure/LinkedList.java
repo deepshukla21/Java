@@ -1,5 +1,5 @@
 /******************************************************************************
- *  Purpose: Created LinkedList and all it's method
+ *  Purpose: Created Singly LinkedList and all it's method to perform required operations
  *  @author  Deep Shukla
  *  @version 1.0
  *  @date    05-08-2019
@@ -126,7 +126,7 @@ public class LinkedList<T>{
 		}
 		return index;
 	}
-	//// **************Inserting element at specific position**************
+	// **************Inserting element at specific position**************
 	// Method to insert element at specific position in LinkedList 
 	public void insertNode(T data, int position) {
 		Node<T> node = new Node<T>();
@@ -186,6 +186,31 @@ public class LinkedList<T>{
 		}
 		return result;
 	}
+	// **************Sorting of list**************
+	// Method to sort the element of list in ascending order
+	public void sort() {
+		Node<T> index, current;
+		current = first;
+		index = null;
+		if(current == null) {
+			System.out.println("List is empty");
+			return;
+		}
+		else {
+		 while(current != null) {
+			index = current.next;
+		  while(index != null) {
+		   if((Integer)current.element > (Integer)index.element){
+			  T temp = current.element;
+			  current.element = index.element;
+			  index.element = temp;					  
+		   }
+		   index = index.next;
+		  }
+		  current = current.next;
+		 }
+		}
+	}
 
 	public static void main(String[] args) {
 		LinkedList<Integer> list = new LinkedList<Integer>();
@@ -195,11 +220,7 @@ public class LinkedList<T>{
 		list.add(90);
 		list.add(100);
 		list.read();
-		boolean b1 = list.search(100);
-		if(b1) {
-			list.remove(100);
-		}
-		System.out.println("============");
+		list.sort();
 		list.read();
 		
 	}
