@@ -111,18 +111,19 @@ public class QueueUsingLinkedList<T> {
  // Main method to test QueueUsingLinkedList class
    public static void main(String[] args) {
 	QueueUsingLinkedList<Integer> queue = new QueueUsingLinkedList<Integer>();
+	QueueUsingLinkedList<Integer> queue1 = new QueueUsingLinkedList<Integer>();
 	queue.enQueue(10);
-//	queue.enQueue(20);
-//	queue.enQueue(30);
-//	queue.enQueue(40);
-//	queue.display();
-//	System.out.println(queue.deQueue());
+	queue.enQueue(20);
+	queue.enQueue(30);
+	queue.enQueue(40);
+	queue.display();
+	System.out.println(queue.deQueue());
 	System.out.println(queue.peek());
 	System.out.println("===Dequeue Operations======");
-	queue.addFront(10);
-	queue.addFront(20);
-	queue.addFront(90);
-	queue.displayDeque();
+	queue1.addFront(10);
+	queue1.addFront(20);
+	queue1.addFront(90);
+	queue1.displayDeque();
 //	queue.removeFront();
 //	queue.displayDeque();
 }
