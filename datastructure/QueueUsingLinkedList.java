@@ -8,7 +8,7 @@ package com.bridgelabz.datastructure;
 
 class NodeQ<T>{
 	T data;
-	NodeQ<T> next;
+	NodeQ<T> next, previous;
 }
 public class QueueUsingLinkedList<T> {
     NodeQ<T> first, last;
@@ -65,6 +65,20 @@ public class QueueUsingLinkedList<T> {
 	   }
 	   System.out.println();
    }
+   public void displayDeque() {
+	   if(first == null) {
+		   System.out.println("Queue is empty");
+		   return;
+	   }
+	   NodeQ<T> current = first;
+	   System.out.print(first.data + " ");
+	   current = first.previous;
+	   while(current != null) {
+		  System.out.print(current.data + " ");
+		  current = current.previous;
+	   }
+	   System.out.println();
+   }
    // Method to get first element in queue
    public T peek() {
 	   if(first == null) {
@@ -72,17 +86,45 @@ public class QueueUsingLinkedList<T> {
 	   }
 	   return first.data;
    }
+   
+   public void addFront(T data) {
+	   NodeQ<T> node = new NodeQ<T>();
+	   node.data = data;
+	   if(first == null) {
+        first  =   node;
+	   }
+	   else {
+		   first.next = node;
+		   node.previous = first;
+		   first = node;
+	   }
+	  // first = node;	  
+   }
+   public T removeFront() {
+	   if(first == null) {
+		   throw new NullPointerException("Dequeue is empty");
+	   }
+	   NodeQ<T> current = first;
+	   first = first.previous;
+	   return current.data;
+   }
  // Main method to test QueueUsingLinkedList class
    public static void main(String[] args) {
 	QueueUsingLinkedList<Integer> queue = new QueueUsingLinkedList<Integer>();
 	queue.enQueue(10);
-	queue.enQueue(20);
-	queue.enQueue(30);
-	queue.enQueue(40);
-	queue.display();
-	System.out.println(queue.deQueue());
+//	queue.enQueue(20);
+//	queue.enQueue(30);
+//	queue.enQueue(40);
+//	queue.display();
+//	System.out.println(queue.deQueue());
 	System.out.println(queue.peek());
-	queue.display();
+	System.out.println("===Dequeue Operations======");
+	queue.addFront(10);
+	queue.addFront(20);
+	queue.addFront(90);
+	queue.displayDeque();
+//	queue.removeFront();
+//	queue.displayDeque();
 }
    
 }
