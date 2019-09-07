@@ -29,7 +29,7 @@ public class BankingCashCounter{
 			else {
 				System.out.println("Sorry can't process the transaction, we can process amount less than " + amount);
 			}
-			// Once opeartion done remove from queue
+			// Once opeartion done remove person from queue
 			queue.deQueue();
 		}
 		else if(choice == 2) {
@@ -52,7 +52,7 @@ public class BankingCashCounter{
 					System.out.println("Wish to see you again");
 				   }
 			   }
-			// Once operation done remove from queue
+			// Once operation done remove person from queue
 			  queue.deQueue();
 		}
 		// If choice is invalid again calling the method to serve customer
@@ -70,6 +70,7 @@ public class BankingCashCounter{
 			 cashCounter(queue);			
 		}
 	}
+	// Method to help people with entry process of bank
 	public static void entry() {
 		QueueUsingLinkedList<Integer> queue = new QueueUsingLinkedList<Integer>();
 		System.out.println("Do you want to enter in queue enter yes or no ");
@@ -83,14 +84,14 @@ public class BankingCashCounter{
 		   }
 		 }
 		 else {
-			 System.out.println("Thanks for visisting us");
+			 System.out.println("Thanks for visiting us");
 			 return;
 		 }
 		 cashCounter(queue);
 	}
 	// Main method to test the  BankingCashCounter class
 	public static void main(String[] args) {	
-	 System.out.println("Welcome to Cash Counter");
+	 System.out.println("Welcome to bank's Cash Counter");
 	 entry();
 	}
 }
