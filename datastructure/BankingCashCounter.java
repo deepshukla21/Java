@@ -12,7 +12,9 @@ public class BankingCashCounter{
 	 static Scanner sc = new Scanner(System.in);
 	 // Method for withdrawing or depositing money in bank
 	public static void cashCounter(QueueUsingLinkedList<Integer> queue) {
+		// Amount available in bank
 		int amount = 100000;
+		// Limit for depositing money
 		int deposit = 40000;
 		System.out.println("Welcome to cash counter, if you want to withdraw money enter 1 , for depositing money enter 2");
 		int choice = sc.nextInt();
