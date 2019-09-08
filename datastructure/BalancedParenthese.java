@@ -1,24 +1,23 @@
-/******************************************************************************
- *  Purpose:  To check if arithmetic expression is balanced or not using stack
- *  @author  Deep Shukla
- *  @version 1.0
- *  @date    6-08-2019
- ******************************************************************************/
 package com.bridgelabz.datastructure;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class BalancedParenthese {
 	public static boolean isMatching(String brackets) {
 		Stack<Character> stack = new Stack<Character>(); 
         for (int i = 0; i < brackets.length(); i++){
             char bracket = brackets.charAt(i);
-            if (bracket == '(' || bracket == '{' || bracket == '[') {
+            if (bracket == '(' || bracket == '{' || bracket == '[' || bracket == '<' ) {
                 stack.push(bracket);
             }
-            else if(bracket == ')' || bracket == '}' || bracket == ']') 
+            else if(bracket == ')' || bracket == '}' || bracket == ']' || bracket == '>') 
             { 
-            	stack.pop();
+                if(!stack.isEmpty())
+            	  stack.pop();
+            	else
+            	  return false;
+
             }	
         }
         return stack.isEmpty();
@@ -27,6 +26,10 @@ public class BalancedParenthese {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the expression you want to check which has parentheses");
 		String expression = sc.nextLine();
+		if(!(Pattern.matches(".*[\\[\\]\\(\\)\\{\\}\\<\\>].*", expression))){
+			System.out.println("Atleast one instance of (, <, {, [ is required in expression");
+			return;
+		}
 		boolean balanced = isMatching(expression);
 		if(balanced) {
 			System.out.println("Expression is balanced");
