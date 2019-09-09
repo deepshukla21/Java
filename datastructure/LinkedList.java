@@ -1,8 +1,8 @@
 package com.bridgelabz.datastructure;
-//class Node<T>{
-//	T data;
-//	Node<T> next, previous;
-//}
+class Node<T>{
+	T data;
+	Node<T> next, previous;
+}
 
 
 public class LinkedList<T>{
@@ -34,7 +34,7 @@ public class LinkedList<T>{
 			//System.out.println(current.element);
 			//current = current.next;
 			while(current != null) {
-				System.out.println(current.data);
+				System.out.print(current.data + " ");
 				current = current.next;
 			}
 		}
@@ -236,6 +236,7 @@ public class LinkedList<T>{
 			 }
 			}
 		}
+		// Method to read element in reverse order
 		public void readReverse() {
 			if(first == null) {
 				System.out.println("List is empty");
@@ -243,7 +244,7 @@ public class LinkedList<T>{
 			}
 			Node<T> current = last;
 			while(current!= null) {
-				System.out.println(current.data);
+				System.out.print(current.data + " ");
 				current = current.previous;
 			}
 		}
@@ -264,5 +265,3 @@ public class LinkedList<T>{
 
 
 	}
-
-

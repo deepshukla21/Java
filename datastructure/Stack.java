@@ -1,11 +1,6 @@
 package com.bridgelabz.datastructure;
-class Node<T>{
-	T data;
-	Node<T> next, previous;
-}
 
 public class Stack<T> {
-	  private Node<T> first, last;
 	  int count = 0 ;
 	  LinkedList<T> LL = new LinkedList<T>();
 	  

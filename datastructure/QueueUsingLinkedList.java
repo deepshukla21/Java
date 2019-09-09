@@ -1,5 +1,10 @@
+/******************************************************************************
+ *  Purpose: Created Queue using LinkedList and all it's method to perform required operations
+ *  @author  Deep Shukla
+ *  @version 1.0
+ *  @date    07-08-2019
+ ******************************************************************************/
 package com.bridgelabz.datastructure;
-
 
 class NodeQ<T>{
 	T data;
@@ -9,7 +14,7 @@ public class QueueUsingLinkedList<T> {
     NodeQ<T> first, last;
    
    // Method to add element in queue
-   public void enQueue(T data) {
+   public void enqueue(T data) {
 	   NodeQ<T> node = new NodeQ<T>();
 	   node.data = data;
 	   if(first == null) {
@@ -35,18 +40,20 @@ public class QueueUsingLinkedList<T> {
    }
    // Method to check number of elements in queue
    public int size() {
-	   int count = 0;
-		NodeQ<T> current = first;
-		while(current != null) {
-			count++;
-			current = current.next;
-		}
-		return count;
+	   int size = 0;
+	   if(first == null) {
+		   return size;
+	   }
+	   while(first.next != null) {
+		   size ++;
+		   first = first.next;
+	   }
+	   return size;
    }
    // Method to display element present in queue
    public void display() {
 	   if(first == null) {
-		   System.out.println("Queue is empty");
+		   System.out.println("Stack is empty");
 		   return;
 	   }
 	   NodeQ<T> current = first;
@@ -58,6 +65,20 @@ public class QueueUsingLinkedList<T> {
 	   }
 	   System.out.println();
    }
+   public void displayDeque() {
+	   if(first == null) {
+		   System.out.println("Queue is empty");
+		   return;
+	   }
+	   NodeQ<T> current = first;
+	   System.out.print(first.data + " ");
+	   current = first.previous;
+	   while(current != null) {
+		  System.out.print(current.data + " ");
+		  current = current.previous;
+	   }
+	   System.out.println();
+   }
    // Method to get first element in queue
    public T peek() {
 	   if(first == null) {
@@ -65,50 +86,45 @@ public class QueueUsingLinkedList<T> {
 	   }
 	   return first.data;
    }
-   
+  // Method to add element at front
    public void addFront(T data) {
 	   NodeQ<T> node = new NodeQ<T>();
-	   NodeQ<T> current;
 	   node.data = data;
 	   if(first == null) {
-        first  = last =   node;
+        first  =   node;
 	   }
 	   else {
-		   current = first;
-		   current.previous = node;
+		   first.next = node;
+		   node.previous = first;
 		   first = node;
-		   first.next = current;
 	   }
-	 	  
+	  // first = node;	  
    }
-   public T removeLast() {
+   // Method to remove element from front
+   public T removeFront() {
 	   if(first == null) {
-		   throw new NullPointerException("Queue is empty");
+		   throw new NullPointerException("Dequeue is empty");
 	   }
-	   NodeQ<T> current = first; 
-	   NodeQ<T>  previous =  null;
-		while(current.next != null) {
-			previous = current;
-			current = current.next;
-	 }
-		T data = current.data;
-		current = previous;
-		current.next = null;
-		 return data;
-		
-  }
+	   NodeQ<T> current = first;
+	   first = first.previous;
+	   return current.data;
+   }
  // Main method to test QueueUsingLinkedList class
    public static void main(String[] args) {
+	QueueUsingLinkedList<Integer> queue = new QueueUsingLinkedList<Integer>();
 	QueueUsingLinkedList<Integer> queue1 = new QueueUsingLinkedList<Integer>();
+	queue.enqueue(10);
+	queue.enqueue(20);
+	queue.enqueue(30);
+	queue.enqueue(40);
+	queue.display();
+	System.out.println(queue.deQueue());
+	System.out.println(queue.peek());
+	System.out.println("===Dequeue Operations======");
 	queue1.addFront(10);
 	queue1.addFront(20);
-	queue1.enQueue(30);
-	//queue1.enQueue(20);
-	queue1.addFront(10);
-	queue1.display();
-	queue1.removeLast();
-	queue1.display();
-	
-	
-	}
+	queue1.addFront(90);
+	queue1.displayDeque();
+}
+   
 }
