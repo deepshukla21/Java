@@ -3,8 +3,6 @@ class Node<T>{
 	T data;
 	Node<T> next, previous;
 }
-
-
 public class LinkedList<T>{
 		Node<T> first, last;
 		
