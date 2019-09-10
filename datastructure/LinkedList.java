@@ -1,8 +1,10 @@
 package com.bridgelabz.datastructure;
-class Node<T>{
-	T data;
-	Node<T> next, previous;
-}
+//class Node<T>{
+//	T data;
+//	Node<T> next, previous;
+//}
+
+
 public class LinkedList<T>{
 		Node<T> first, last;
 		
@@ -39,23 +41,7 @@ public class LinkedList<T>{
 		}
 		// Method to read element last element from Linkedlist
 		public T rev_read_element() {
-			Node<T> current = last;
-			T element = null; 
-			
-			if(current == null)
-			{ 
-				System.out.println("No elements present in list");
-				return element;
-			}
-			//System.out.println(current.element);
-			//current = current.next;
-			while(current != null) {
-				//System.out.println(current.element);
-				element = current.data;
-				current = current.previous;
-			}
-			
-			return element;
+		    return last.data;
 		}	
 
 		// **************Searching**************
@@ -82,6 +68,20 @@ public class LinkedList<T>{
 			}
 			return isEmpty;
 		}
+		
+   public T readAt(int index) {
+       Node<T> node = first;
+       for(int i=0;i<index;i++){
+           if(node != null) {
+               node = node.next;
+           } else {
+               return null;
+           }
+       }
+
+       return node.data;
+   }		
+		
 		// **************Deleting by key**************
 		// Method to remove element from LinkedList 
 		public boolean remove(T data) {
@@ -246,11 +246,7 @@ public class LinkedList<T>{
 				current = current.previous;
 			}
 		}
-		public void addToOrderedList(T data) {
-			add(data);
-			sort();
-			
-		}
+
      // Main method to test function of LinkedList class
 		public static void main(String[] args) {
 			LinkedList<Integer> list = new LinkedList<Integer>();
@@ -265,5 +261,6 @@ public class LinkedList<T>{
 		}
 
 
-
 	}
+
+
