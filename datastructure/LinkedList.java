@@ -22,6 +22,7 @@ public class LinkedList<T>{
 				last = node;
 			}
 		}
+		
 		// **************Reading**************
 		// Method to read element from Linkedlist
 		public void read() {
@@ -38,7 +39,7 @@ public class LinkedList<T>{
 				current = current.next;
 			}
 		}
-		
+		// Method to read element last element from Linkedlist
 		public T rev_read_element() {
 			Node<T> current = last;
 			T element = null; 
@@ -73,7 +74,7 @@ public class LinkedList<T>{
 			}
 			return element_exist;
 		}
-		// Method to check if element is present in list or not
+		// Method to check if list is empty or not
 		public boolean isEmpty() {
 			boolean isEmpty = true;
 			Node<T> current = first;
@@ -187,7 +188,7 @@ public class LinkedList<T>{
 			node.next = current;
 			previous.next = node;
 		}
-		// Overrided toString() of Object class to write the LinkedList element in file 
+		// Override toString() of Object class to write the LinkedList element in file 
 		@Override
 		public String toString() {
 			// If no element is present in list
@@ -248,7 +249,12 @@ public class LinkedList<T>{
 				current = current.previous;
 			}
 		}
-
+		public void addToOrderedList(T data) {
+			add(data);
+			sort();
+			
+		}
+     // Main method to test function of LinkedList class
 		public static void main(String[] args) {
 			LinkedList<Integer> list = new LinkedList<Integer>();
 			list.add(40);
