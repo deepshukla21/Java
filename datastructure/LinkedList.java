@@ -74,12 +74,11 @@ public class LinkedList<T>{
 		}
 		// Method to check if list is empty or not
 		public boolean isEmpty() {
-			boolean isEmpty = true;
+			boolean isEmpty = false;
 			Node<T> current = first;
-			while(current != null) {
-				isEmpty = false;
-				current = current.next;
-				
+			if(current == null) {
+				isEmpty = true;
+				return isEmpty;
 			}
 			return isEmpty;
 		}
@@ -261,8 +260,7 @@ public class LinkedList<T>{
 			list.add(90);
 			list.add(100);
 			list.readReverse();
-			//list.sort();
-			//list.read();
+			
 			
 		}
 
