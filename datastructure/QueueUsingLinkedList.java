@@ -75,7 +75,7 @@ public class QueueUsingLinkedList<T> {
 	   }
 	   else {
 		   current = first;
-		   current.previous = node;
+		   //current.previous = node;
 		   first = node;
 		   first.next = current;
 	   }
@@ -94,9 +94,21 @@ public class QueueUsingLinkedList<T> {
 		T data = current.data;
 		current = previous;
 		current.next = null;
-		 return data;
-		
+		 return data;	
   }
+   public T readAt(int index) {
+       NodeQ<T> node = first;
+       for(int i=0;i<index;i++){
+           if(node != null) {
+               node = node.next;
+           } else {
+               return null;
+           }
+       }
+
+       return node.data;
+   }		
+
  // Main method to test QueueUsingLinkedList class
    public static void main(String[] args) {
 	QueueUsingLinkedList<Integer> queue1 = new QueueUsingLinkedList<Integer>();
@@ -106,9 +118,9 @@ public class QueueUsingLinkedList<T> {
 	//queue1.enQueue(20);
 	queue1.addFront(10);
 	queue1.display();
-	queue1.removeLast();
-	queue1.display();
-	
+//	queue1.removeLast();
+//	queue1.display();
+//	
 	
 	}
 }

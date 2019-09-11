@@ -7,6 +7,7 @@
 package com.bridgelabz.datastructure;
 
 import java.util.Scanner;
+import com.bridgelabz.datastructure.LinkedList;
 
 public class BankingCashCounter{
 	 Scanner sc = new Scanner(System.in);
@@ -135,7 +136,6 @@ public class BankingCashCounter{
 	    newClient.setAccountNumber(AccountNumber);
 	    newClient.setBalance(SeedFund);
 	    clientList.enQueue(newClient);
-	    System.out.println("Current size: " + clientList.size());
 	    return true;
 	    } catch (Exception e){
 	        return false;

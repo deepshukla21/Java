@@ -1,3 +1,4 @@
+package com.bridgelabz.datastructure;
 public class Client {
     private String Name;
     private int AccountNumber;
