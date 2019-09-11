@@ -38,6 +38,21 @@ public class QueueUsingLinkedList<T> {
 	   first = first.next;
 	   return current.data; 
    }
+
+   //Method to get element at particular index.
+   public T readAt(int index) {
+       NodeQ<T> node = first;
+       for(int i=0;i<index;i++){
+           if(node != null) {
+               node = node.next;
+           } else {
+               return null;
+           }
+       }
+
+       return node.data;
+   }
+
    // Method to check number of elements in queue
    public int size() {
 	   int size = 0;

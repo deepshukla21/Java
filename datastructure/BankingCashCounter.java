@@ -9,25 +9,60 @@ package com.bridgelabz.datastructure;
 import java.util.Scanner;
 
 public class BankingCashCounter{
-	 static Scanner sc = new Scanner(System.in);
-	 // Method for withdrawing or depositing money in bank
-	public static void cashCounter(QueueUsingLinkedList<Integer> queue) {
+	 Scanner sc = new Scanner(System.in);
+     QueueUsingLinkedList<Client> clientList = new QueueUsingLinkedList<Client>();
+     
+    private Client getAccount(int AccountNumber) {
+        Client client;
+        int size;
+        size = clientList.size();
+        for(int i=0; i<clientList.size(); i++) {
+            client = clientList.readAt(i);
+            
+            if(client != null) {
+                if(client.getAccountNumber() == AccountNumber)
+                  return client;
+            }
+       }
+        return null;
+    } 
+     
+	// Method for withdrawing or depositing money in bank
+	public void cashCounter(QueueUsingLinkedList<Integer> queue) {
+	    int AccountNumber;
+	    Client curClient = new Client();
 		// Amount available in bank
 		int amount = 100000;
 		// Limit for depositing money
 		int deposit = 40000;
-		System.out.println("Welcome to cash counter, if you want to withdraw money enter 1 , for depositing money enter 2");
+		
+		AccountNumber = queue.peek();
+		curClient = getAccount(AccountNumber);
+		
+		if(curClient == null){
+		   System.out.println("Invalid account number. Moving to next customer.");
+		   return;
+		
+		}
+		  
+		
+		
+		System.out.println("Welcome " + curClient.getName() +".");
+		System.out.println("if you want to withdraw money enter 1 , for depositing money enter 2");
 		int choice = sc.nextInt();
+		amount = curClient.getBalance();
+		
 		if(choice == 1) {
 			System.out.println("Enter the amount you want to withdraw ");
 			int withdraw = sc.nextInt();
 			if(withdraw <= amount) {
 				System.out.println(withdraw + " Rs is withdraw from account");
 				amount = amount - withdraw;
-				System.out.println(amount + " Rs is left in bank");
+				curClient.setBalance(amount);
+				System.out.println("Balance: Rs." + amount);
 			}
 			else {
-				System.out.println("Sorry can't process the transaction, we can process amount less than " + amount);
+				System.out.println("Sorry can't process the transaction, we can process amount more than " + amount);
 			}
 			// Once opeartion done remove person from queue
 			queue.deQueue();
@@ -38,7 +73,8 @@ public class BankingCashCounter{
 			if(depositMoney <= deposit) {
 				System.out.println(depositMoney + " Rs is deposited in account");
 				amount = amount + depositMoney;
-				System.out.println(amount + " Rs is left in bank");
+				curClient.setBalance(amount);
+				System.out.println("Balance: Rs." + amount);
 			}
 			else {
 				System.out.println("In one day you cannot deposit more than " + deposit + "Rs");
@@ -59,7 +95,6 @@ public class BankingCashCounter{
 		else {
 			System.out.println("Sorry your choice doesn't match please try again");
 			cashCounter(queue);
-
 		}
 		// Checking if queue is empty and someone wants to enter in queue
 		if(queue.isEmpty()) {
@@ -71,15 +106,18 @@ public class BankingCashCounter{
 		}
 	}
 	// Method to help people with entry process of bank
-	public static void entry() {
+	public void entry() {
 		QueueUsingLinkedList<Integer> queue = new QueueUsingLinkedList<Integer>();
+		int    accountNumber;
 		System.out.println("Do you want to enter in queue enter yes or no ");
 		 String entry = sc.next();
 		 if(entry.equalsIgnoreCase("yes")) {
 		   while(entry.equalsIgnoreCase("yes")) {
-	        System.out.println("Please mark entry in queue like 1, 2...");
-	        queue.enQueue(sc.nextInt());
-	        System.out.println("Do you want to enter one more person yes or no");
+	        System.out.println("Please enter your account number");
+	        accountNumber = sc.nextInt();
+	        queue.enQueue(accountNumber);
+	        System.out.println("Thank you. Please wait for your turn");
+	        System.out.println("Next Please? yes or no");
 	        entry = sc.next();
 		   }
 		 }
@@ -89,9 +127,19 @@ public class BankingCashCounter{
 		 }
 		 cashCounter(queue);
 	}
-	// Main method to test the  BankingCashCounter class
-	public static void main(String[] args) {	
-	 System.out.println("Welcome to bank's Cash Counter");
-	 entry();
+	
+	public Boolean setupNewAccount (String Name, int AccountNumber, int SeedFund) {
+	    try {
+	    Client newClient = new Client();
+	    newClient.setName(Name);
+	    newClient.setAccountNumber(AccountNumber);
+	    newClient.setBalance(SeedFund);
+	    clientList.enQueue(newClient);
+	    System.out.println("Current size: " + clientList.size());
+	    return true;
+	    } catch (Exception e){
+	        return false;
+	    }
 	}
+	// Main method to test the  BankingCashCounter class
 }
