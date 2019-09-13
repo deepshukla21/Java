@@ -23,7 +23,9 @@ public void setPrice(double price) {
 public double getPrice() {
 	return price;
 }
+@Override
 public String toString() {
-   return "Pulses = [ name " + name + ", weight = " + weight + " ,price = " + price + "]";  
+	return "Pulses [name=" + name + ", weight=" + weight + ", price=" + price + "]";
 }
+
 }
