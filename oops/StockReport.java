@@ -1,12 +1,16 @@
 package com.bridgelabz.oops;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map.Entry;
+import java.util.HashMap;
 import java.util.Scanner;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 
 public class StockReport {
 	static Scanner sc = new Scanner(System.in);
@@ -33,7 +37,9 @@ public class StockReport {
 	public static void main(String[] args) {
 		ObjectMapper mapper = new ObjectMapper();
 		StockPortfolio port = new StockPortfolio();
-		Stock stock1=new Stock();
+		port.loadStocks("stock.json");
+		port.display();
+		/*Stock stock1=new Stock();
 		System.out.println("Do you want to enter stock enter yes or no");
 		String choice = sc.next();
 		while(choice.equalsIgnoreCase("yes")) {
@@ -42,23 +48,35 @@ public class StockReport {
 		 port.add(stock1);
 		 System.out.println("You want to enter one more stock enter yes or no ");
 		 choice = sc.next();
-		}
+		}*/
 		// Open a file 
-		File file = new File("stock.txt");
-		try(FileWriter fileWriter = new FileWriter(file);
-				BufferedWriter bufferedWriter = new BufferedWriter(fileWriter))
-		{
-			// Write all the stock object present in HashMap to file
-			 for(Entry<String, Stock> entry : port.map.entrySet())  
-			{
-			String content = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry.getValue());
-			bufferedWriter.write(content);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println("==================================");
-		// Closing resource
+//		 String content = "";
+//		File file = new File("stock.json");
+//		try(FileWriter fileWriter = new FileWriter(file);
+//				BufferedWriter bufferedWriter = new BufferedWriter(fileWriter))
+//		{
+//			// Write all the stock object present in HashMap to file
+//			 content = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(port.map);
+//			bufferedWriter.write(content);
+//			
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+	System.out.println("==================================");
+//		HashMap<String, Stock> map = null;
+//		File file = new File("stock.json");
+//
+//		try(FileReader fileReader = new FileReader(file);
+//				BufferedReader bufferedWriter = new BufferedReader(fileReader))
+//		{
+//			map = mapper.readValue(file, new TypeReference<HashMap<String ,Stock>>() {});
+//		    port.map.putAll(map);
+//		    System.out.println(port.map);
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+	// Closing resource
 		try {
 				if(sc != null) {
 					sc.close();
