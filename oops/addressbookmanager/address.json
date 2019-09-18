@@ -1,0 +1,19 @@
+[ {
+  "firstName" : "Prachi",
+  "lastName" : "Tiwari",
+  "phoneNumber" : "7066664437",
+  "address" : {
+    "city" : "Bangalore",
+    "state" : "Karnataka",
+    "zipCode" : 481331
+  }
+}, {
+  "firstName" : "Deep",
+  "lastName" : "Shukla",
+  "phoneNumber" : "9340553307",
+  "address" : {
+    "city" : "Pune",
+    "state" : "MH",
+    "zipCode" : 560067
+  }
+} ]
