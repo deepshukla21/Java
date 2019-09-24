@@ -23,8 +23,15 @@ public class LoginServlet extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		String userRegex = "^[a-z0-9]{1,8}$";
+		String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,20}$";
+		boolean login = false;
 		
-	    boolean login = UserLogin.checkUser(username, password);
+		// Validating data
+		if(username.matches(userRegex) && password.matches(passwordRegex)) {
+			
+		 login = UserLogin.checkUser(username, password);
+		}	    
 	    if(login){
 	    	out.println("Welcome " + username);        	
 	    }
